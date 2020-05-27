@@ -2,7 +2,10 @@ import fetch from 'node-fetch';
 
 export class WonderbillApiHelper {
   public static async getBills(field: string): Promise<any> {
-    const bills = this.makeApiRequest(`https://localhost:3000/providers/${field}`);
+    console.log('Getting bills');
+    const bills = await this.makeApiRequest(`https://localhost:3000/providers/${field}`);
+
+    console.log({ bills });
 
     return bills;
   }
