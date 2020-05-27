@@ -1,7 +1,8 @@
-const express = require('express');
-const providers = require('./providers.json');
+import express from 'express';
+import * as providers from './providers.json';
 const app = express();
 const port = 3000;
+import * as bills from './endpoints/bills';
 
 const FAILURE_PROBABILITY = 0.5;
 
@@ -21,5 +22,7 @@ app.get('/providers/:id', (req, res) => {
   if (!bills) return res.status(404).end();
   res.send(bills);
 });
+
+app.get('/failsafe', bills.handler);
 
 app.listen(port, () => console.log(`Providers server listening at http://localhost:${port}`));
