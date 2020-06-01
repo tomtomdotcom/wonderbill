@@ -2,7 +2,6 @@ import * as Router from 'koa-router';
 import { WonderbillApiHelper } from './ApiHelper';
 
 export const handler: Router.IMiddleware = async (ctx): Promise<void> => {
-  console.log({ KAPPA: ctx.params.type });
   if (ctx.params.type === 'gas' || ctx.params.type === 'internet') {
     try {
       ctx.body = await WonderbillApiHelper.getBills(ctx.params.type);
